@@ -1,0 +1,8 @@
+name: JEmoji
+main: com.josemarcellio.jemoji.JEmoji
+author: JoseMarcellio
+version: 1.0
+description: A lightweight emoji plugin!
+commands:
+  jemoji:
+    aliases: emoji
