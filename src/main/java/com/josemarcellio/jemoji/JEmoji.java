@@ -3,6 +3,7 @@ package com.josemarcellio.jemoji;
 import com.josemarcellio.jemoji.core.command.MainCommand;
 import com.josemarcellio.jemoji.core.listener.InventoryClickListener;
 import com.josemarcellio.jemoji.core.listener.PlayerChatListener;
+import com.josemarcellio.jemoji.core.listener.SignChangeListener;
 import com.josemarcellio.jemoji.core.metrics.Metrics;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,7 +29,8 @@ public class JEmoji extends JavaPlugin {
         saveDefaultConfig ();
         instance = this;
 
-        register(new PlayerChatListener (this), new InventoryClickListener (this));
+        register(new PlayerChatListener (this), new InventoryClickListener (this),
+                new SignChangeListener (this));
 
         getCommand(mainCommand.getMainCommand()).setExecutor(mainCommand);
     }

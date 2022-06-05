@@ -1,12 +1,12 @@
 package com.josemarcellio.jemoji.core.command.subcommand;
 
-import com.josemarcellio.jemoji.common.PluginInstance;
 import com.josemarcellio.jemoji.common.api.SubCommand;
 import com.josemarcellio.jemoji.core.inventory.InventoryMenu;
+import com.josemarcellio.jemoji.core.util.Utility;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class GuiCommand extends SubCommand implements PluginInstance {
+public class GuiCommand extends SubCommand {
 
 
     @Override
@@ -27,8 +27,12 @@ public class GuiCommand extends SubCommand implements PluginInstance {
     @Override
     public void execute(CommandSender commandSender, String[] args) {
         if (args.length < 2) {
-            Player player = (Player)commandSender;
-            InventoryMenu.open(player);
+            if (commandSender instanceof Player) {
+                Player player = (Player) commandSender;
+                InventoryMenu.open ( player );
+            } else {
+                commandSender.sendMessage( Utility.getColor("&7Only player can use this command!"));
+            }
         }
     }
 }
