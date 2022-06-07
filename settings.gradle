@@ -1,2 +1,3 @@
 rootProject.name = 'JEmoji'
-
+include 'jemoji-plugin'
+include 'jemoji-common'
