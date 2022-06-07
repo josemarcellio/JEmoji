@@ -26,7 +26,7 @@ public class SignChangeListener implements Listener {
             if (file.getBoolean ( "clear-color-after-emoji" )) {
                 emoji += file.getString("clear-color-symbol");
             }
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < event.getLines().length; i++) {
                 String message = Utility.getColor ( event.getLine ( i ).replace ( string, emoji ) );
                 if (event.getLine ( i ).contains ( string )) {
                     if (player.hasPermission ( "jemoji.*" ) || player.hasPermission ( permission ) || permission.equalsIgnoreCase ( "none" )) {

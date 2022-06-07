@@ -43,13 +43,14 @@ public class InventoryClickListener implements Listener {
                     if (JEmoji.getEconomy ().getMoney ( player ) >= price) {
                         JEmoji.getEconomy ().takeMoney ( player, price );
                         Bukkit.getServer().dispatchCommand( Bukkit.getConsoleSender(), executor.replace("{player}", player.getName()).replace("{permission}", permission));
-                        if (file.getBoolean ( "purchase-message" )) {
-                            player.sendMessage ( Utility.getColor ( file.getString ( "purchase-success" ).replace ( "{emoji}", emoji ).replace ( "{price}", String.valueOf ( price ) ) ) );
+                        player.sendMessage ( Utility.getColor ( file.getString ( "purchase-message-success" ).replace ( "{emoji}", emoji ).replace ( "{price}", String.valueOf ( price ) ) ) );
+                        Utility.playSound(player, file.getString("purchase-sound-success"));
+                        if (file.getBoolean ( "close-gui-after-purchase-emoji" )) {
+                            player.closeInventory();
                         }
                     } else {
-                        if (file.getBoolean ( "purchase-message" )) {
-                            player.sendMessage ( Utility.getColor ( file.getString ( "purchase-failed" ).replace ( "{emoji}", emoji ).replace ( "{price}", String.valueOf ( price ) ) ) );
-                        }
+                        Utility.playSound(player, file.getString("purchase-sound-failed"));
+                        player.sendMessage ( Utility.getColor ( file.getString ( "purchase-message-failed" ).replace ( "{emoji}", emoji ).replace ( "{price}", String.valueOf ( price ) ) ) );
                     }
                 }
             }
