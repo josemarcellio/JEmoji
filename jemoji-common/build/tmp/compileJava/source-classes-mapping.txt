@@ -1,4 +1,0 @@
-com/josemarcellio/jemoji/common/api/SubCommand.java
- com.josemarcellio.jemoji.common.api.SubCommand
-com/josemarcellio/jemoji/common/economy/Economy.java
- com.josemarcellio.jemoji.common.economy.Economy
