@@ -1,9 +1,0 @@
-name: JEmoji
-main: com.josemarcellio.jemoji.core.JEmoji
-author: JoseMarcellio
-version: 1.2
-description: A lightweight emoji plugin!
-softdepend: [Vault]
-commands:
-  jemoji:
-    aliases: emoji
