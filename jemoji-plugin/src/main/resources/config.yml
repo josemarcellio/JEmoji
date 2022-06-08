@@ -9,6 +9,9 @@ gui-name: "&8JEmoji GUI"
 clear-color-after-emoji: true
 clear-color-symbol: "&r"
 
+emoji-chat-suggestion: true
+emoji-chat-suggestion-prefix: "@"
+
 close-gui-after-purchase-emoji: true
 purchase-message-success: "&7You purchased {emoji} &7for &a{price}"
 purchase-message-failed: "&7You need &a{price} &7to purchase {emoji}"

@@ -13,6 +13,7 @@ repositories {
 dependencies {
     implementation project(":jemoji-plugin")
     implementation project(":jemoji-common")
+    implementation project(":jemoji-version_1_16")
 }
 
 tasks {

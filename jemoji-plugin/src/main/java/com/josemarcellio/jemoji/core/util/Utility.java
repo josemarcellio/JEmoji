@@ -7,7 +7,11 @@ import org.bukkit.entity.Player;
 public class Utility {
 
     public static String getColor(String string) {
-        return ChatColor.translateAlternateColorCodes ('&', string);
+        if (VersionUtil.isLegacy()) {
+            return ChatColor.translateAlternateColorCodes ('&', string);
+        } else {
+            return HexColor.getColor(string);
+        }
     }
 
     public static void playSound(Player player, String sound) {

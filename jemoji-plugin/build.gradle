@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     compileOnly project(":jemoji-common")
+    compileOnly project(":jemoji-version_1_16")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     implementation("com.github.cryptomorin:XSeries:8.7.1")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7")

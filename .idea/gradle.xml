@@ -11,9 +11,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/jemoji-common" />
             <option value="$PROJECT_DIR$/jemoji-plugin" />
+            <option value="$PROJECT_DIR$/jemoji-version_1_16" />
           </set>
         </option>
       </GradleProjectSettings>
     </option>
+    <option name="offlineMode" value="true" />
   </component>
 </project>

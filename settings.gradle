@@ -1,3 +1,5 @@
 rootProject.name = 'JEmoji'
 include 'jemoji-plugin'
 include 'jemoji-common'
+include 'jemoji-version_1_16'
+
