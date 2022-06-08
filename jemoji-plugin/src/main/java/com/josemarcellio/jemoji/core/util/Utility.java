@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class Utility {
 
     public static String getColor(String string) {
-        if (VersionUtil.isLegacy()) {
+        if (VersionUtil.getVersion() < 16) {
             return ChatColor.translateAlternateColorCodes ('&', string);
         } else {
             return HexColor.getColor(string);

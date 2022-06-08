@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 
 public class VersionUtil {
 
-    public static boolean isLegacy() {
-        return Byte.parseByte( Bukkit.getServer().getClass().getName().split("\\.")[3].split("_")[1]) < 16;
+    public static Byte getVersion() {
+        return Byte.parseByte( Bukkit.getServer().getClass().getName().split("\\.")[3].split("_")[1]);
     }
 }

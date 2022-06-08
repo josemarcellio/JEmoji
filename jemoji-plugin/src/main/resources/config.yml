@@ -15,6 +15,9 @@ purchase-message-failed: "&7You need &a{price} &7to purchase {emoji}"
 purchase-sound-success: "NOTE_PLING"
 purchase-sound-failed: "ENDERMAN_TELEPORT"
 
+status-owned: "&cYou already have this emoji!"
+status-purchase: "&eClick to purchase!"
+
 emoji:
   "<3":
     icon: "EMERALD"
@@ -25,6 +28,8 @@ emoji:
       - "&7Chat Prefix: &a{prefix}"
       - "&7Permission: &a{permission}"
       - "&7Price: &a{price}"
+      - " "
+      - "{status}"
     executor: "lp user {player} permission set {permission}"
   ":cat:":
     icon: "head;eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWY3YjA1NWU2ZmVmOTE0ZGNkMmI4NjJhZGMwMWI4MzM4ZTc5ZTFiMjZhYzNhNzExZjg4ZDE2NzZjNDI4NjgxNSJ9fX0="
@@ -35,6 +40,8 @@ emoji:
       - "&7Chat Prefix: &a{prefix}"
       - "&7Permission: &a{permission}"
       - "&7Price: &a{price}"
+      - " "
+      - "{status}"
     executor: "lp user {player} permission set {permission}"
   ":yey:":
     icon: "head;eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTJlOTgxNjVkZWVmNGVkNjIxOTUzOTIxYzFlZjgxN2RjNjM4YWY3MWMxOTM0YTQyODdiNjlkN2EzMWY2YjgifX19"
@@ -45,6 +52,8 @@ emoji:
       - "&7Chat Prefix: &a{prefix}"
       - "&7Permission: &a{permission}"
       - "&7Price: &a{price}"
+      - " "
+      - "{status}"
     executor: "lp user {player} permission set {permission}"
   ":puffer:":
     icon: "head;eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjkyMzUwYzlmMDk5M2VkNTRkYjJjNzExMzkzNjMyNTY4M2ZmYzIwMTA0YTliNjIyYWE0NTdkMzdlNzA4ZDkzMSJ9fX0="
@@ -55,6 +64,8 @@ emoji:
       - "&7Chat Prefix: &a{prefix}"
       - "&7Permission: &a{permission}"
       - "&7Price: &a{price}"
+      - " "
+      - "{status}"
     executor: "lp user {player} permission set {permission}"
   ":dog:":
     icon: "head;eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjkzZDFiYzQwNWQ5ZGU2MDA4ZWNjYjI1MzkxZWQ4ZWY4MDllZDViNWRmZmJkMTBjNjQ5YmM4YTQ4YjZlOTFlIn19fQ=="
@@ -65,4 +76,6 @@ emoji:
       - "&7Chat Prefix: &a{prefix}"
       - "&7Permission: &a{permission}"
       - "&7Price: &a{price}"
+      - " "
+      - "{status}"
     executor: "lp user {player} permission set {permission}"

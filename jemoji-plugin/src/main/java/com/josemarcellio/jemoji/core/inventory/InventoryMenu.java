@@ -74,6 +74,12 @@ public class InventoryMenu {
             String permission = file.getString ( "emoji." + string + ".permission" );
             int price = file.getInt ( "emoji." + string + ".price" );
             List<String> loree = file.getStringList ( "emoji." + string + ".lore" );
+            String status;
+            if (player.hasPermission(permission) || player.hasPermission("jemoji.*")) {
+                status = file.getString("status-owned");
+            } else {
+                status = file.getString("status-purchase");
+            }
             String[] split = material.split ( ";" );
             ItemStack itemStack;
             if(split[0].equals("head")) {
@@ -83,7 +89,7 @@ public class InventoryMenu {
                     SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta ();
                     SkullUtils.applySkin ( skullMeta, split[1] );
                     skullMeta.setDisplayName ( Utility.getColor ( emoji ) );
-                    skullMeta.setLore ( loree.stream ().map ( lore -> Utility.getColor(lore.replace("{prefix}", string).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)).replace("{permission}", permission) )).collect ( Collectors.toList () ) );
+                    skullMeta.setLore ( loree.stream ().map ( lore -> Utility.getColor(lore.replace("{prefix}", string).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)).replace("{permission}", permission).replace("{status}", status) )).collect ( Collectors.toList () ) );
                     itemStack.setItemMeta ( skullMeta );
                     items.add ( itemStack );
                 }
@@ -92,7 +98,7 @@ public class InventoryMenu {
                 if (itemStack != null) {
                     ItemMeta itemMeta = itemStack.getItemMeta ();
                     itemMeta.setDisplayName ( Utility.getColor ( emoji ) );
-                    itemMeta.setLore ( loree.stream ().map ( lore -> Utility.getColor(lore.replace("{prefix}", string).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)).replace("{permission}", permission) )).collect ( Collectors.toList () ) );
+                    itemMeta.setLore ( loree.stream ().map ( lore -> Utility.getColor(lore.replace("{prefix}", string).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)).replace("{permission}", permission).replace("{status}", status) )).collect ( Collectors.toList () ) );
                     itemStack.setItemMeta ( itemMeta );
                     items.add ( itemStack );
                 }
