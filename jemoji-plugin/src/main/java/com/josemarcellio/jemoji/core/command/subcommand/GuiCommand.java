@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 
 public class GuiCommand extends SubCommand {
 
-
     @Override
     public String getCommandName() {
         return "gui";
@@ -31,7 +30,7 @@ public class GuiCommand extends SubCommand {
                 Player player = (Player) commandSender;
                 InventoryMenu.open ( player );
             } else {
-                commandSender.sendMessage( Utility.getColor("&7Only player can use this command!"));
+                commandSender.sendMessage( Utility.getColor("&cOnly player can use this command!"));
             }
         }
     }
