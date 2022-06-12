@@ -8,6 +8,7 @@ version '1.4-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url ("https://jitpack.io") }
 }
 
 dependencies {

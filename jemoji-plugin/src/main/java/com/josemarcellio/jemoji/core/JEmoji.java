@@ -7,6 +7,7 @@ import com.josemarcellio.jemoji.core.listener.PlayerChatListener;
 import com.josemarcellio.jemoji.core.listener.SignChangeListener;
 import com.josemarcellio.jemoji.core.metrics.Metrics;
 import com.josemarcellio.jemoji.core.softdepend.Vault;
+import com.josemarcellio.updatechecker.UpdateChecker;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,6 +33,8 @@ public class JEmoji extends JavaPlugin {
 
         saveDefaultConfig ();
         instance = this;
+
+        new UpdateChecker (this).init("JEmoji", 1.4, "https://raw.githubusercontent.com/josemarcellio/UpdateChecker/master/my-plugin.json");
 
         if (this.getServer().getPluginManager().isPluginEnabled("Vault")) {
             RegisteredServiceProvider<?> rsp = this.getServer ().getServicesManager ().getRegistration ( net.milkbowl.vault.economy.Economy.class );
