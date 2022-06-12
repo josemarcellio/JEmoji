@@ -32,7 +32,7 @@ public class JEmoji extends JavaPlugin {
 
         saveDefaultConfig ();
 
-        new UpdateChecker (this).init("JEmoji", 1.4, "https://raw.githubusercontent.com/josemarcellio/UpdateChecker/master/my-plugin.json");
+        new UpdateChecker (this).init("JEmoji", 1.4, "https://raw.githubusercontent.com/josemarcellio/my-plugin/master/update.json");
 
         if (this.getServer().getPluginManager().isPluginEnabled("Vault")) {
             RegisteredServiceProvider<?> rsp = this.getServer ().getServicesManager ().getRegistration ( net.milkbowl.vault.economy.Economy.class );
