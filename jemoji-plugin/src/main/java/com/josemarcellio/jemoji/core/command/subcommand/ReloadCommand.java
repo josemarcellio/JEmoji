@@ -9,6 +9,12 @@ import org.bukkit.entity.Player;
 
 public class ReloadCommand extends SubCommand {
 
+    public final JEmoji plugin;
+
+    public ReloadCommand(JEmoji plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public String getCommandName() {
         return "reload";
@@ -27,9 +33,9 @@ public class ReloadCommand extends SubCommand {
     @Override
     public void execute(CommandSender commandSender, String[] args) {
         if (args.length < 2) {
-            JEmoji.instance.reloadConfig();
+            plugin.reloadConfig();
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (player.getOpenInventory ().getTitle().equals( Utility.getColor(JEmoji.instance.getConfig().getString("gui-name")))) {
+                if (player.getOpenInventory ().getTitle().equals( Utility.getColor(plugin.getConfig().getString("gui-name")))) {
                     player.closeInventory ();
                 }
             }

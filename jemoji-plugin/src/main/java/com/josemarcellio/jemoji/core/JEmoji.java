@@ -16,8 +16,7 @@ import java.util.Arrays;
 
 public class JEmoji extends JavaPlugin {
 
-    public static JEmoji instance;
-    private final MainCommand mainCommand = new MainCommand();
+    private final MainCommand mainCommand = new MainCommand(this);
     private static Economy economy;
 
     public void register(Listener... listeners) {
@@ -32,7 +31,6 @@ public class JEmoji extends JavaPlugin {
         new Metrics (this, 15391);
 
         saveDefaultConfig ();
-        instance = this;
 
         new UpdateChecker (this).init("JEmoji", 1.4, "https://raw.githubusercontent.com/josemarcellio/UpdateChecker/master/my-plugin.json");
 

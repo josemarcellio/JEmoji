@@ -17,6 +17,12 @@ import java.util.stream.Collectors;
 
 public class InventoryMenu {
 
+    private JEmoji plugin;
+
+    public InventoryMenu(JEmoji plugin) {
+        this.plugin = plugin;
+    }
+
     public ArrayList<Inventory> pages = new ArrayList<> ();
     public UUID uuid;
     public int currentpage = 0;
@@ -65,9 +71,9 @@ public class InventoryMenu {
         return inventory;
     }
 
-    public static void open(Player player) {
+    public void open(Player player) {
         ArrayList<ItemStack> items = new ArrayList<> ();
-        FileConfiguration file = JEmoji.instance.getConfig();
+        FileConfiguration file = plugin.getConfig();
         for (String string : file.getConfigurationSection ( "emoji" ).getKeys ( false )) {
             String emoji = file.getString ( "emoji." + string + ".set-emoji" );
             String material = file.getString ( "emoji." + string + ".icon" );
@@ -103,7 +109,6 @@ public class InventoryMenu {
                     items.add ( itemStack );
                 }
             }
-
             new InventoryMenu ( items, Utility.getColor(file.getString("gui-name")), player );
         }
     }
