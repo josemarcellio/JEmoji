@@ -1,21 +1,32 @@
 package com.josemarcellio.jemoji.core.listener;
 
+import com.josemarcellio.jemoji.common.executor.Executor;
 import com.josemarcellio.jemoji.core.JEmoji;
+import com.josemarcellio.jemoji.core.executor.*;
 import com.josemarcellio.jemoji.core.inventory.InventoryMenu;
 import com.josemarcellio.jemoji.core.util.Utility;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InventoryClickListener implements Listener {
 
     private final JEmoji plugin;
+    private final List<Executor> executor = new ArrayList<> ();
 
     public InventoryClickListener(JEmoji plugin) {
         this.plugin = plugin;
+        executor.add(new CloseInventoryExecutor () );
+        executor.add(new ConsoleCommandExecutor () );
+        executor.add(new MessageExecutor () );
+        executor.add(new PlayerChatExecutor () );
+        executor.add(new PlayerCommandExecutor () );
+        executor.add(new SoundExecutor () );
     }
 
     @EventHandler
@@ -34,7 +45,6 @@ public class InventoryClickListener implements Listener {
             String emoji = file.getString ( "emoji." + string + ".set-emoji" );
             String permission = file.getString ( "emoji." + string + ".permission" );
             int price = file.getInt ( "emoji." + string + ".price" );
-            String executor = file.getString ( "emoji." + string + ".executor" );
             if (event.getCurrentItem ().getItemMeta ().getDisplayName ().equals ( Utility.getColor ( emoji ) )) {
                 if (player.hasPermission ( "jemoji.*" ) || player.hasPermission ( permission ) || permission.equalsIgnoreCase ( "none" ) || price < 0) {
                     return;
@@ -42,15 +52,25 @@ public class InventoryClickListener implements Listener {
                 if (plugin.getServer ().getPluginManager ().isPluginEnabled ( "Vault" )) {
                     if (JEmoji.getEconomy ().getMoney ( player ) >= price) {
                         JEmoji.getEconomy ().takeMoney ( player, price );
-                        Bukkit.getServer().dispatchCommand( Bukkit.getConsoleSender(), executor.replace("{player}", player.getName()).replace("{permission}", permission));
-                        player.sendMessage ( Utility.getColor ( file.getString ( "purchase-message-success" ).replace ( "{emoji}", emoji ).replace ( "{price}", String.valueOf ( price ) ) ) );
-                        Utility.playSound(player, file.getString("purchase-sound-success"));
-                        if (file.getBoolean ( "close-gui-after-purchase-emoji" )) {
-                            player.closeInventory();
-                        }
+                        file.getStringList("emoji." + string + ".executor").forEach(exec -> {
+                            for (Executor executor : executor) {
+                                if (exec.startsWith("[success-" + executor.getExecutor () + "]")) {
+                                    int req = 10 + executor.getExecutor ().length();
+                                    String cmd = exec.substring(req);
+                                    executor.execute(plugin, player, Utility.getColor(cmd).replace("{player}", player.getName()).replace("{permission}", permission).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)));
+                                }
+                            }
+                        });
                     } else {
-                        Utility.playSound(player, file.getString("purchase-sound-failed"));
-                        player.sendMessage ( Utility.getColor ( file.getString ( "purchase-message-failed" ).replace ( "{emoji}", emoji ).replace ( "{price}", String.valueOf ( price ) ) ) );
+                        file.getStringList("emoji." + string + ".executor").forEach(exec -> {
+                            for (Executor executor : executor) {
+                                if (exec.startsWith("[failed-" + executor.getExecutor () + "]")) {
+                                    int req = 9 + executor.getExecutor ().length();
+                                    String cmd = exec.substring(req);
+                                    executor.execute(plugin, player, Utility.getColor(cmd).replace("{player}", player.getName()).replace("{permission}", permission).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)));
+                                }
+                            }
+                        });
                     }
                 }
             }

@@ -3,17 +3,15 @@
 # bypass global permission "jemoji.*"
 # custom head support! head;texture
 # set permission to "none" or change price to -1 to disable economy
+#list executor:
+#[success-close-inventory], [success-console-command], [success-message], [success-chat], [success-player-command], [success-sound]
+#[failed-close-inventory], [failed-console-command], [failed-message] ,[failed-chat] ,[failed-player-command], [failed-sound]
+#placeholder executor: {player}, {price}, {emoji}, and {permission}
 
 gui-name: "&8JEmoji GUI"
 
 clear-color-after-emoji: true
 clear-color-symbol: "&r"
-
-close-gui-after-purchase-emoji: true
-purchase-message-success: "&7You purchased {emoji} &7for &a{price}"
-purchase-message-failed: "&7You need &a{price} &7to purchase {emoji}"
-purchase-sound-success: "NOTE_PLING"
-purchase-sound-failed: "ENDERMAN_TELEPORT"
 
 status-owned: "&cYou already have this emoji!"
 status-purchase: "&eClick to purchase!"
@@ -30,7 +28,14 @@ emoji:
       - "&7Price: &a{price}"
       - " "
       - "{status}"
-    executor: "lp user {player} permission set {permission}"
+    executor:
+      - "[success-console-command]lp user {player} permission set {permission}"
+      - "[success-sound]NOTE_PLING"
+      - "[success-message]&7You purchased {emoji} &7for &a{price}"
+      - "[success-close-inventory]"
+      - "[failed-sound]ENDERMAN_TELEPORT"
+      - "[failed-message]&7You need &a{price} &7to purchase {emoji}"
+      - "[failed-close-inventory]"
   ":cat:":
     icon: "head;eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWY3YjA1NWU2ZmVmOTE0ZGNkMmI4NjJhZGMwMWI4MzM4ZTc5ZTFiMjZhYzNhNzExZjg4ZDE2NzZjNDI4NjgxNSJ9fX0="
     set-emoji: "&e= &b＾● ⋏ ●＾ &e="
@@ -42,7 +47,14 @@ emoji:
       - "&7Price: &a{price}"
       - " "
       - "{status}"
-    executor: "lp user {player} permission set {permission}"
+    executor:
+      - "[success-console-command]lp user {player} permission set {permission}"
+      - "[success-sound]NOTE_PLING"
+      - "[success-message]&7You purchased {emoji} &7for &a{price}"
+      - "[success-close-inventory]"
+      - "[failed-sound]ENDERMAN_TELEPORT"
+      - "[failed-message]&7You need &a{price} &7to purchase {emoji}"
+      - "[failed-close-inventory]"
   ":yey:":
     icon: "head;eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTJlOTgxNjVkZWVmNGVkNjIxOTUzOTIxYzFlZjgxN2RjNjM4YWY3MWMxOTM0YTQyODdiNjlkN2EzMWY2YjgifX19"
     set-emoji: "&aヽ (◕◡◕) ﾉ"
@@ -54,7 +66,14 @@ emoji:
       - "&7Price: &a{price}"
       - " "
       - "{status}"
-    executor: "lp user {player} permission set {permission}"
+    executor:
+      - "[success-console-command]lp user {player} permission set {permission}"
+      - "[success-sound]NOTE_PLING"
+      - "[success-message]&7You purchased {emoji} &7for &a{price}"
+      - "[success-close-inventory]"
+      - "[failed-sound]ENDERMAN_TELEPORT"
+      - "[failed-message]&7You need &a{price} &7to purchase {emoji}"
+      - "[failed-close-inventory]"
   ":puffer:":
     icon: "head;eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjkyMzUwYzlmMDk5M2VkNTRkYjJjNzExMzkzNjMyNTY4M2ZmYzIwMTA0YTliNjIyYWE0NTdkMzdlNzA4ZDkzMSJ9fX0="
     set-emoji: "&e<('O')>"
@@ -66,7 +85,14 @@ emoji:
       - "&7Price: &a{price}"
       - " "
       - "{status}"
-    executor: "lp user {player} permission set {permission}"
+    executor:
+      - "[success-console-command]lp user {player} permission set {permission}"
+      - "[success-sound]NOTE_PLING"
+      - "[success-message]&7You purchased {emoji} &7for &a{price}"
+      - "[success-close-inventory]"
+      - "[failed-sound]ENDERMAN_TELEPORT"
+      - "[failed-message]&7You need &a{price} &7to purchase {emoji}"
+      - "[failed-close-inventory]"
   ":dog:":
     icon: "head;eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjkzZDFiYzQwNWQ5ZGU2MDA4ZWNjYjI1MzkxZWQ4ZWY4MDllZDViNWRmZmJkMTBjNjQ5YmM4YTQ4YjZlOTFlIn19fQ=="
     set-emoji: "&6(ᵔᴥᵔ)"
@@ -78,4 +104,11 @@ emoji:
       - "&7Price: &a{price}"
       - " "
       - "{status}"
-    executor: "lp user {player} permission set {permission}"
+    executor:
+      - "[success-console-command]lp user {player} permission set {permission}"
+      - "[success-sound]NOTE_PLING"
+      - "[success-message]&7You purchased {emoji} &7for &a{price}"
+      - "[success-close-inventory]"
+      - "[failed-sound]ENDERMAN_TELEPORT"
+      - "[failed-message]&7You need &a{price} &7to purchase {emoji}"
+      - "[failed-close-inventory]"
