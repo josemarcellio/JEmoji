@@ -8,6 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import java.util.List;
+
 public class PlayerChatListener implements Listener {
 
     private final JEmoji plugin;
@@ -23,11 +25,12 @@ public class PlayerChatListener implements Listener {
         for (String string : file.getConfigurationSection ( "emoji" ).getKeys ( false )) {
             String emoji = file.getString ( "emoji." + string + ".set-emoji" );
             String permission = file.getString ( "emoji." + string + ".permission" );
+            List<String> world = file.getStringList("emoji." + string + ".disable-world");
             if (file.getBoolean ( "clear-color-after-emoji" )) {
                 emoji += file.getString("clear-color-symbol");
             }
             String message = Utility.getColor ( event.getMessage ().replace ( string, emoji ) );
-            if (event.getMessage ().contains ( string )) {
+            if (event.getMessage ().contains ( string ) && !world.contains(player.getWorld().getName())) {
                 if (player.hasPermission ( "jemoji.*" ) || player.hasPermission ( permission ) || permission.equalsIgnoreCase ( "none" )) {
                     event.setMessage ( message );
                 }

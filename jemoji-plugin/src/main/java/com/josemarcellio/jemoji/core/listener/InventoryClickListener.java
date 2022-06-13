@@ -4,6 +4,7 @@ import com.josemarcellio.jemoji.common.executor.Executor;
 import com.josemarcellio.jemoji.core.JEmoji;
 import com.josemarcellio.jemoji.core.executor.*;
 import com.josemarcellio.jemoji.core.inventory.InventoryMenu;
+import com.josemarcellio.jemoji.core.util.ServerUtil;
 import com.josemarcellio.jemoji.core.util.Utility;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -49,7 +50,7 @@ public class InventoryClickListener implements Listener {
                 if (player.hasPermission ( "jemoji.*" ) || player.hasPermission ( permission ) || permission.equalsIgnoreCase ( "none" ) || price < 0) {
                     return;
                 }
-                if (plugin.getServer ().getPluginManager ().isPluginEnabled ( "Vault" )) {
+                if (ServerUtil.getPluginEnabled ("Vault")) {
                     if (JEmoji.getEconomy ().getMoney ( player ) >= price) {
                         JEmoji.getEconomy ().takeMoney ( player, price );
                         file.getStringList("emoji." + string + ".executor").forEach(exec -> {

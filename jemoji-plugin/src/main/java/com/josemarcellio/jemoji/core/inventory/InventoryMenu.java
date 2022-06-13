@@ -75,6 +75,7 @@ public class InventoryMenu {
         ArrayList<ItemStack> items = new ArrayList<> ();
         FileConfiguration file = plugin.getConfig();
         for (String string : file.getConfigurationSection ( "emoji" ).getKeys ( false )) {
+            String name = file.getString("emoji." + string + ".name");
             String emoji = file.getString ( "emoji." + string + ".set-emoji" );
             String material = file.getString ( "emoji." + string + ".icon" );
             String permission = file.getString ( "emoji." + string + ".permission" );
@@ -94,8 +95,8 @@ public class InventoryMenu {
                     itemStack.setDurability ( (short) 3);
                     SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta ();
                     SkullUtils.applySkin ( skullMeta, split[1] );
-                    skullMeta.setDisplayName ( Utility.getColor ( emoji ) );
-                    skullMeta.setLore ( loree.stream ().map ( lore -> Utility.getColor(lore.replace("{prefix}", string).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)).replace("{permission}", permission).replace("{status}", status) )).collect ( Collectors.toList () ) );
+                    skullMeta.setDisplayName ( Utility.getPlaceholder (player, name.replace("{emoji}", emoji) ) );
+                    skullMeta.setLore ( loree.stream ().map ( lore -> Utility.getPlaceholder(player, lore.replace("{prefix}", string).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)).replace("{permission}", permission).replace("{status}", status) )).collect ( Collectors.toList () ) );
                     itemStack.setItemMeta ( skullMeta );
                     items.add ( itemStack );
                 }
@@ -103,13 +104,13 @@ public class InventoryMenu {
                 itemStack = XMaterial.valueOf ( material ).parseItem ();
                 if (itemStack != null) {
                     ItemMeta itemMeta = itemStack.getItemMeta ();
-                    itemMeta.setDisplayName ( Utility.getColor ( emoji ) );
-                    itemMeta.setLore ( loree.stream ().map ( lore -> Utility.getColor(lore.replace("{prefix}", string).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)).replace("{permission}", permission).replace("{status}", status) )).collect ( Collectors.toList () ) );
+                    itemMeta.setDisplayName ( Utility.getPlaceholder (player, name.replace("{emoji}", emoji) ) );
+                    itemMeta.setLore ( loree.stream ().map ( lore -> Utility.getPlaceholder(player, lore.replace("{prefix}", string).replace("{emoji}", emoji).replace("{price}", String.valueOf(price)).replace("{permission}", permission).replace("{status}", status) )).collect ( Collectors.toList () ) );
                     itemStack.setItemMeta ( itemMeta );
                     items.add ( itemStack );
                 }
             }
-            new InventoryMenu ( items, Utility.getColor(file.getString("gui-name")), player );
+            new InventoryMenu ( items, Utility.getPlaceholder(player, file.getString("gui-name")), player );
         }
     }
 }
