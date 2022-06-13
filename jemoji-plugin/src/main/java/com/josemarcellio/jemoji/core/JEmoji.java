@@ -7,6 +7,7 @@ import com.josemarcellio.jemoji.core.listener.PlayerChatListener;
 import com.josemarcellio.jemoji.core.listener.SignChangeListener;
 import com.josemarcellio.jemoji.core.metrics.Metrics;
 import com.josemarcellio.jemoji.core.softdepend.Vault;
+import com.josemarcellio.jemoji.core.util.Utility;
 import com.josemarcellio.updatechecker.UpdateChecker;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -33,9 +34,11 @@ public class JEmoji extends JavaPlugin {
         saveDefaultConfig ();
 
         new UpdateChecker ().setJavaPlugin(this)
-                .setPluginName ( "JEmoji" )
-                .setPluginVersion ( 1.5 )
-                .setJsonURL ( "https://raw.githubusercontent.com/josemarcellio/my-plugin/master/update.json" )
+                .setResourceId(102447)
+                .setMessage( Utility.getColor("&c=============================================================" +
+                        "\n\n&cYour JEmoji is outdated, please update your JEmoji!" +
+                        "\n\n&cThere is a new version {latest_version}, you are still using version {current_version}" +
+                        "\n\n&c============================================================="))
                 .init();
 
         if (this.getServer().getPluginManager().isPluginEnabled("Vault")) {
