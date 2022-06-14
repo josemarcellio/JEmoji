@@ -8,6 +8,7 @@ import com.josemarcellio.jemoji.core.listener.SignChangeListener;
 import com.josemarcellio.jemoji.core.metrics.Metrics;
 import com.josemarcellio.jemoji.core.softdepend.Vault;
 import com.josemarcellio.jemoji.core.util.Utility;
+import com.josemarcellio.updatechecker.Provider;
 import com.josemarcellio.updatechecker.UpdateChecker;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -35,7 +36,8 @@ public class JEmoji extends JavaPlugin {
 
         new UpdateChecker ().setJavaPlugin(this)
                 .setResourceId(102447)
-                .setMessage( Utility.getColor("&c=============================================================" +
+                .setProvider(Provider.SPIGET)
+                .setMessage(Utility.getColor("&c=============================================================" +
                         "\n\n&cYour JEmoji is outdated, please update your JEmoji!" +
                         "\n\n&cThere is a new version {latest_version}, you are still using version {current_version}" +
                         "\n\n&c============================================================="))
