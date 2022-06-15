@@ -29,6 +29,7 @@ public class InventoryClickListener implements Listener {
         executor.add(new PlayerChatExecutor () );
         executor.add(new PlayerCommandExecutor () );
         executor.add(new SoundExecutor () );
+        executor.add(new ActionBarExecutor ());
     }
 
     @EventHandler
@@ -48,7 +49,7 @@ public class InventoryClickListener implements Listener {
             String emoji = file.getString ( "emoji." + string + ".set-emoji" );
             String permission = file.getString ( "emoji." + string + ".permission" );
             int price = file.getInt ( "emoji." + string + ".price" );
-            if (event.getCurrentItem ().getItemMeta ().getDisplayName ().equals ( Utility.getPlaceholder (player, name ) ) || event.getCurrentItem ().getItemMeta ().getDisplayName ().equals ( Utility.getPlaceholder (player, emoji ) )) {
+            if (event.getCurrentItem ().getItemMeta ().getDisplayName ().equals ( Utility.getPlaceholder (player, name.replace("{emoji}", emoji) )  )) {
                 if (player.hasPermission ( "jemoji.*" ) || player.hasPermission ( permission ) || permission.equalsIgnoreCase ( "none" ) || price < 0) {
                     return;
                 }

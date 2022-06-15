@@ -1,6 +1,5 @@
 package com.josemarcellio.jemoji.core.util;
 
-import com.cryptomorin.xseries.XSound;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -21,9 +20,5 @@ public class Utility {
         } else {
             return getColor(string);
         }
-    }
-
-    public static void playSound(Player player, String sound) {
-        XSound.matchXSound(sound).ifPresent ( xSound -> xSound.play ( player.getLocation (), 1f, 1f ) );
     }
 }

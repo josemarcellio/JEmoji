@@ -1,19 +1,19 @@
 package com.josemarcellio.jemoji.core.executor;
 
-import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.messages.ActionBar;
 import com.josemarcellio.jemoji.common.executor.Executor;
+import com.josemarcellio.jemoji.core.util.Utility;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class SoundExecutor implements Executor {
-
+public class ActionBarExecutor implements Executor {
     @Override
     public String getExecutor() {
-        return "sound";
+        return "actionbar";
     }
 
     @Override
     public void execute(JavaPlugin javaPlugin, Player player, String string) {
-        XSound.matchXSound(string).ifPresent ( xSound -> xSound.play ( player.getLocation (), 1f, 1f ) );
+        ActionBar.sendActionBar (javaPlugin, player, Utility.getColor(string));
     }
 }

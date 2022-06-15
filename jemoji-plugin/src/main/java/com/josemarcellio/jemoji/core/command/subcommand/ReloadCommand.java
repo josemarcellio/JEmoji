@@ -35,7 +35,7 @@ public class ReloadCommand extends SubCommand {
         if (args.length < 2) {
             plugin.reloadConfig();
             for (Player player : Bukkit.getOnlinePlayers()) {
-                if (player.getOpenInventory ().getTitle().equals( Utility.getColor(plugin.getConfig().getString("gui-name")))) {
+                if (player.getOpenInventory ().getTitle().equals( Utility.getPlaceholder(player, plugin.getConfig().getString("gui-name")))) {
                     player.closeInventory ();
                 }
             }
