@@ -1,20 +1,20 @@
 package com.josemarcellio.jemoji.core.listener;
 
-import com.josemarcellio.jemoji.core.JEmoji;
 import com.josemarcellio.jemoji.core.util.Utility;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 
 public class SignChangeListener implements Listener {
 
-    private final JEmoji plugin;
+    private final JavaPlugin plugin;
 
-    public SignChangeListener(JEmoji plugin) {
+    public SignChangeListener(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 

@@ -2,7 +2,6 @@ package com.josemarcellio.jemoji.core.inventory;
 
 import com.cryptomorin.xseries.SkullUtils;
 import com.cryptomorin.xseries.XMaterial;
-import com.josemarcellio.jemoji.core.JEmoji;
 import com.josemarcellio.jemoji.core.util.Utility;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -11,15 +10,16 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class InventoryMenu {
 
-    private JEmoji plugin;
+    private JavaPlugin plugin;
 
-    public InventoryMenu(JEmoji plugin) {
+    public InventoryMenu(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -42,31 +42,28 @@ public class InventoryMenu {
         players.put(p.getUniqueId(), this);
     }
 
-
-
     public static final String nextPageName = Utility.getColor("&7Next Page &e&l→");
     public static final String previousPageName = Utility.getColor("&e&l← &7Previous Page");
 
     private Inventory getBlankPage(String name){
         Inventory inventory = Bukkit.createInventory(null, 36, name);
 
-        ItemMeta meta;
         ItemStack nextpage = XMaterial.ARROW.parseItem();
         if(nextpage != null) {
-            meta = nextpage.getItemMeta();
+            ItemMeta meta = nextpage.getItemMeta();
             meta.setDisplayName ( nextPageName );
             nextpage.setItemMeta ( meta );
         }
 
         ItemStack previouspage = XMaterial.ARROW.parseItem();
         if (previouspage != null) {
-            meta = previouspage.getItemMeta ();
+            ItemMeta meta = previouspage.getItemMeta ();
             meta.setDisplayName ( previousPageName );
             previouspage.setItemMeta ( meta );
         }
 
-        inventory.setItem(35, nextpage);
-        inventory.setItem(27, previouspage);
+            inventory.setItem ( 35, nextpage );
+            inventory.setItem ( 27, previouspage );
 
         return inventory;
     }

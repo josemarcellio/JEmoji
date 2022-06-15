@@ -1,17 +1,17 @@
 package com.josemarcellio.jemoji.core.command.subcommand;
 
 import com.josemarcellio.jemoji.common.api.SubCommand;
-import com.josemarcellio.jemoji.core.JEmoji;
 import com.josemarcellio.jemoji.core.util.Utility;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class ReloadCommand extends SubCommand {
 
-    public final JEmoji plugin;
+    public final JavaPlugin plugin;
 
-    public ReloadCommand(JEmoji plugin) {
+    public ReloadCommand(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 

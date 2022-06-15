@@ -1,18 +1,19 @@
 package com.josemarcellio.jemoji.core.command;
 
 import com.josemarcellio.jemoji.common.api.SubCommand;
-import com.josemarcellio.jemoji.core.JEmoji;
 import com.josemarcellio.jemoji.core.command.subcommand.GuiCommand;
 import com.josemarcellio.jemoji.core.command.subcommand.ReloadCommand;
 import com.josemarcellio.jemoji.core.util.Utility;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.java.JavaPlugin;
+
 import java.util.ArrayList;
 
 public class MainCommand implements CommandExecutor {
 
-    public final JEmoji plugin;
+    public final JavaPlugin plugin;
 
     public String getMainCommand() {
         return "jemoji";
@@ -20,7 +21,7 @@ public class MainCommand implements CommandExecutor {
 
     private final ArrayList<SubCommand> subCommand = new ArrayList<> ();
 
-    public MainCommand(JEmoji plugin) {
+    public MainCommand(JavaPlugin plugin) {
         this.plugin = plugin;
         subCommand.add(new GuiCommand (plugin));
         subCommand.add(new ReloadCommand (plugin));

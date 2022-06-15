@@ -1,17 +1,17 @@
 package com.josemarcellio.jemoji.core.command.subcommand;
 
 import com.josemarcellio.jemoji.common.api.SubCommand;
-import com.josemarcellio.jemoji.core.JEmoji;
 import com.josemarcellio.jemoji.core.inventory.InventoryMenu;
 import com.josemarcellio.jemoji.core.util.Utility;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class GuiCommand extends SubCommand {
 
-    private final JEmoji plugin;
+    private final JavaPlugin plugin;
 
-    public GuiCommand(JEmoji plugin) {
+    public GuiCommand(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 
