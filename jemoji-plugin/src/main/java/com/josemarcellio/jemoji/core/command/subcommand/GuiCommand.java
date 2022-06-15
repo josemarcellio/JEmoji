@@ -27,7 +27,7 @@ public class GuiCommand extends SubCommand {
 
     @Override
     public String getDescription() {
-        return "Open GUI";
+        return "Open Emoji GUI";
     }
 
     @Override
